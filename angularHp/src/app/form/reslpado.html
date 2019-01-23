@@ -1,0 +1,97 @@
+<div class="container">
+    <div class="row justify-content-center">
+      <form>
+        <div class="form-row">
+          <div class="form-group col-md-2">
+            <label for="inputEmail4">Id</label>
+            <input type="number" class="form-control" id="inputEmail4" required placeholder="Id" name="id" ngModel #id>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputPassword4">Name1</label>
+            <input type="text" class="form-control" id="inputPassword4" placeholder="Name1" required  >
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputEmail4">Street</label>
+            <input type="text" class="form-control" id="inputEmail4" placeholder="Street" name="street" ngModel #street>
+          </div>
+          <div class="form-check form-check-inline">
+            <label class="form-check-label" for="inlineCheckbox1">Work</label>
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" name="work" ngModel #work>
+          </div>
+        </div>
+        <hr>
+        <!--SEGUNDA FILA-->
+        <div class="form-row">
+          <div class="form-group col-md-2">
+  
+          </div>
+          <div class="form-group col-md-5">
+            <label for="inputPassword4">Name2</label>
+            <input type="text" class="form-control" id="inputPassword4" placeholder="Name2">
+          </div>
+          <div class="form-group col-md-5">
+            <label for="inputEmail4">Contact Name</label>
+            <input type="text" class="form-control" id="inputEmail4" placeholder="Contact Name" name="contact" ngModel #contact>
+          </div>
+        </div>
+        <!--tercer-->
+        <div class="form-row">
+          <div class="form-group col-md-2">
+          </div>
+          <div class="form-group col-md-5">
+            <label for="inputPassword4">Name3</label>
+            <input type="text" class="form-control" id="inputPassword4" placeholder="Name3">
+          </div>
+          <div class="form-group col-md-1">
+            <label for="inputEmail4">City</label>
+            <input type="text" class="form-control" id="inputEmail4" placeholder="City" name="city" ngModel #city>
+          </div>
+          <div class="form-group col-md-1">
+            <label for="inputEmail4">Country</label>
+            <input type="text" class="form-control" id="inputEmail4" placeholder="Country" name="country" ngModel #country>
+          </div>
+          <div class="form-group col-md-1">
+            <label for="inputEmail4">Phone</label>
+            <input type="tel" class="form-control" id="inputEmail4" placeholder="Phone" name="phone" ngModel #phone>
+          </div>
+        </div>
+        <!--cuarta-->
+        <div class="form-row">
+          <div class="form-group col-md-2">
+          </div>
+          <div class="form-group col-md-5">
+            <label for="inputPassword4">Name4</label>
+            <input type="text" class="form-control" id="inputPassword4" placeholder="Name4">
+          </div>
+          <div class="form-group col-md-1">
+            <label for="inputEmail4">State</label>
+            <input type="text" class="form-control" id="inputEmail4" placeholder="State" name="state" ngModel #state>
+          </div>
+          <div class="form-group col-md-1">
+            <label for="inputEmail4">Zip/Cd</label>
+            <input type="number" class="form-control" id="inputEmail4" placeholder="Zip" name="zip" ngModel #zip>
+          </div>
+          <button type="button" class="btn btn-secondary btn-lg" disabled>Save</button>
+        </div>
+  
+   {{id.value}}
+   {{zip.value}}
+   {{state.value}}
+   export class AppComponent {
+ 
+    rForm: FormGroup;
+    post:any;
+    name:string = '';
+    email:string = '';
+  
+  
+    constructor(private fb:FormBuilder){
+      this.rForm = fb.group({
+        'name': [null, Validators.required],
+        'email': [null, Validators.compose([Validators.required , Validators.minLength(30), Validators.maxLength(50)])],
+      })
+    }
+    addPost(post){
+      this.name = post.name;
+      this.email = post.email
+    }

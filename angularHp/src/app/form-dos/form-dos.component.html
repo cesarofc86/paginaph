@@ -1,0 +1,54 @@
+<div class="container" id="body">
+  <div class="row justify-content-center">
+    <div class="col-10">
+      <div class="jumbotron">
+        <form name="form" [formGroup]="form" (ngSubmit)="form.valid && onSubmit()">
+          <div class="form-group">
+            <br>
+            <h1>Request Access <br> <span class="badge badge-primary text-left">Form 1</span></h1>
+            <br>
+            <label for="name">Nombre</label>
+            <input type="text" class="form-control" formControlName="name" [ngClass]="{'is-invalid': form.get('name').touched && form.get('name').invalid}">
+            <div class="invalid-feedback">
+              <div>nombre es requerido</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" formControlName="email" [ngClass]="{'is-invalid': form.get('email').touched && form.get('email').invalid}">
+            <div *ngIf="form.get('email').touched && form.get('email').invalid" class="invalid-feedback">
+              <div *ngIf="form.get('email').errors.required" >Email is required</div>
+              <div *ngIf="form.get('email').errors.email" >Email must be Valid Mail</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="confirm">Confirm</label>
+            <input type="text" class="form-control" formControlName="confirm" [ngClass]="{'is-invalid': form.get('confirm').touched && form.get('confirm').invalid}">
+            <div *ngIf="form.get('confirm').touched && form.get('confirm').invalid"  class="invalid-feedback">
+              <div *ngIf="form.get('confirm').errors.required">Email is required</div>
+              <div *ngIf="form.get('confirm').errors.email">Email must be Valid Mail</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" formControlName="password" [ngClass]="{'is-invalid': form.get('password').touched && form.get('password').invalid}">
+            <div *ngIf="form.get('password').touched && form.get('password').invalid"  class="invalid-feedback">
+              <div *ngIf="form.get('password').errors.required">Password is required</div>
+              <div *ngIf="form.get('password').errors.minlength">Password must be min 6 characters</div>
+            </div>
+          </div>
+          <select class="custom-select">
+            <option selected>Plan Type</option>
+            <option value="1">Plan 1</option>
+            <option value="2">Plan 2</option>
+            <option value="3">Plan 3</option>
+          </select>
+          <hr>
+          <div class="form-group">
+            <button class="btn btn-primary" [disabled]="!form.valid">Register</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
